@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "Cambio USD to BRL",
-  "description": "This extension shows a Google Image search result for the current page",
+  "description": "This extension shows exchange rate USD/BRL in dynamic icon.",
   "version": "1.0",
 
   "browser_action": {

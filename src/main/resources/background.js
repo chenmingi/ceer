@@ -1,6 +1,6 @@
 function drawIcon(text) {
     var num = text.substr(0,2);
-    var dec = text.substr(3, text.length);
+    var dec = text.substr(2,3);
     var canvas = document.getElementById("meuIcon");
     var context = canvas.getContext("2d");
     context.rect(0, 0, 19, 19);

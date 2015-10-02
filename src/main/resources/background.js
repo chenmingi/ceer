@@ -18,18 +18,25 @@ function drawIcon(text) {
 }
 
 function sendRequest() {
+    var today = new Date();
+    var hours = today.getHours();
+    //console.log(hours+" "+(hours >= 9)+" "+(hours < 17)+" "+(hours >= 9 && hours < 17))
+    if(hours >= 7 && hours < 17){
+        refresh();
+    }
+}
+
+function refresh() {
     $.ajax({
         dataType: "json",
         url: "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.xchange%20where%20pair%20in%20(%22USDBRL%22)&format=json&env=store://datatables.org/alltableswithkeys&callback="
     }).done(function (data) {
         var rate = data.query.results.rate.Rate;
         drawIcon(rate);
-        chrome.browserAction.setTitle(rate);
     });
 }
 
-
-$(document).ready(function () {
-    sendRequest();
+$(document).ready(function() {
+    refresh();
     window.setInterval(sendRequest, 60000);
 });
